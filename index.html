@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dapur Mba Indah - Menu Lezat & Otentik</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+    <style>
+      /* Custom CSS untuk Dapur Mba Indah */
+
+      /* ------------------------------------- */
+      /* 0. UTILITIES & COLOR VARIABLES */
+      /* ------------------------------------- */
+
+      body {
+        font-family: "Poppins", sans-serif;
+        color: #333;
+        background: linear-gradient(to bottom, #ffffff, #f8f8f8);
+      }
+
+      :root {
+        --primary-color: #4caf50; /* Hijau Segar */
+        --secondary-color: #ff9800; /* Oranye Cerah */
+        --text-dark: #212529;
+        --text-light: #ffffff;
+        --star-color: #ffc107; /* Kuning Bintang */
+      }
+
+      /* ------------------------------------- */
+      /* 1. HEADER & HERO STYLES */
+      /* ------------------------------------- */
+
+      .custom-navbar {
+        background-color: var(--primary-color);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        padding: 0.8rem 0;
+      }
+
+      .navbar-brand {
+        font-size: 1.8rem;
+        font-family: "Playfair Display", serif;
+        transition: transform 0.3s ease;
+      }
+
+      .navbar-logo {
+        height: 40px;
+        width: auto;
+        border-radius: 50%;
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+      }
+
+      .nav-link {
+        font-weight: 600;
+        margin-left: 1.5rem;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background-color: var(--secondary-color);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+
+      /* SLIDER DAN PARALLAX */
+      .hero-section {
+        height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-bg-slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        transition: transform 1.5s ease-in-out;
+      }
+
+      .bg-item {
+        flex-shrink: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        opacity: 1;
+      }
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.65);
+        z-index: 1;
+      }
+
+      .hero-content {
+        z-index: 2;
+        text-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
+        max-width: 800px;
+      }
+
+      .hero-section h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 3.8rem;
+      }
+
+      .btn-warning {
+        background-color: var(--secondary-color) !important;
+        border-color: var(--secondary-color) !important;
+      }
+
+      /* ------------------------------------- */
+      /* 2. MENU CARDS & RATING STYLES */
+      /* ------------------------------------- */
+
+      .section-title {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 3.5rem !important;
+        font-size: 3rem;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -15px;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background-color: var(--secondary-color);
+        border-radius: 2px;
+      }
+
+      /* Gaya kartu menu */
+      .menu-item-card {
+        background-color: var(--text-light);
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .menu-item-card:hover {
+        transform: translateY(-10px) scale(1.03);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2) !important;
+      }
+
+      .menu-item-card img {
+        height: 250px;
+        object-fit: cover;
+        width: 100%;
+        transition: transform 0.6s ease;
+      }
+
+      .menu-item-card:hover img {
+        transform: scale(1.08);
+      }
+
+      .menu-item-card .card-title {
+        font-size: 1.6rem;
+        color: var(--text-dark) !important;
+      }
+
+      /* Container Harga & Tombol */
+      .card-footer-group {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px 20px;
+      }
+
+      .price-rating-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .price-tag {
+        font-size: 1.8rem;
+        color: var(--secondary-color) !important;
+        font-family: "Playfair Display", serif;
+        margin-bottom: 0;
+      }
+
+      /* Tombol Order (WhatsApp) */
+      .order-button {
+        background-color: #25d366 !important;
+        border-color: #25d366 !important;
+        border-radius: 30px;
+        padding: 0.5rem 1.5rem; /* Ukuran tombol lebih besar */
+        font-weight: 600;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .order-button:hover {
+        background-color: #128c7e !important;
+        transform: scale(1.05) translateY(-2px);
+      }
+
+      /* About Section Custom */
+      .about-section {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          #2e7d32 100%
+        );
+        padding: 6rem 0;
+        color: var(--text-light);
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Order Instructions Section */
+      .custom-bg-secondary {
+        background-color: var(--text-dark);
+        padding: 6rem 0;
+      }
+
+      /* LOKASI STYLES */
+      #location {
+        background-color: #f8f8f8;
+      }
+      .location-card {
+        border: none !important;
+      }
+      #location .card-body {
+        padding: 0 !important;
+        overflow: hidden;
+      }
+      #map-iframe {
+        width: 100%;
+        display: block;
+        border-radius: 10px;
+      }
+
+      /* ------------------------------------- */
+      /* 3. RESPONSIVENESS */
+      /* ------------------------------------- */
+
+      @media (max-width: 768px) {
+        .hero-section h1 {
+          font-size: 2.2rem;
+        }
+        .price-tag {
+          font-size: 1.5rem;
+        }
+        .order-button {
+          padding: 0.4rem 0.8rem;
+          font-size: 0.85rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main-wrapper">
+      <nav
+        id="main-navbar"
+        class="navbar navbar-expand-lg sticky-top custom-navbar"
+      >
+        <div class="container">
+          <a class="navbar-brand d-flex align-items-center" href="#">
+            <img
+              src="img/logo.png"
+              alt="Dapur Mba Indah Logo"
+              class="navbar-logo me-2"
+            />
+            <span class="text-white fw-bold logo-text">Dapur Mba Indah</span>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link text-white smooth-scroll" href="#home"
+                  >Beranda</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white smooth-scroll" href="#menu"
+                  >Menu</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white smooth-scroll" href="#about"
+                  >Tentang Kami</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white smooth-scroll" href="#order"
+                  >Pesan</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white smooth-scroll" href="#location"
+                  >Lokasi</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div id="main-content">
+        <section class="hero-section text-center text-white" id="home">
+          <div id="hero-backgrounds" class="hero-bg-slider">
+            <div
+              class="bg-item active"
+              style="background-image: url('img/ayam-bakar.jpg')"
+            ></div>
+            <div
+              class="bg-item"
+              style="background-image: url('img/ayam-geprek.jpg')"
+            ></div>
+            <div
+              class="bg-item"
+              style="background-image: url('img/ayam-goreng.jpg')"
+            ></div>
+          </div>
+
+          <div class="overlay"></div>
+          <div class="container py-5 position-relative hero-content">
+            <h1
+              class="display-3 fw-bold"
+              data-aos="fade-down"
+              data-aos-duration="1000"
+            >
+              Rasa Otentik, Kualitas Fantastik
+            </h1>
+            <p
+              class="lead"
+              data-aos="fade-up"
+              data-aos-delay="500"
+              data-aos-duration="1000"
+            >
+              Setiap hidangan dibuat dengan bahan segar dan bumbu rahasia.
+            </p>
+            <a
+              href="#menu"
+              class="btn btn-warning btn-lg shadow mt-4 fw-bold smooth-scroll"
+              data-aos="zoom-in"
+              data-aos-delay="1000"
+              data-aos-duration="1000"
+              >Lihat Menu Lengkap <i class="fas fa-arrow-down"></i
+            ></a>
+          </div>
+        </section>
+
+        <section id="menu" class="py-5 bg-light menu-section">
+          <div class="container">
+            <h2
+              class="text-center mb-5 section-title"
+              data-aos="fade-in"
+              data-aos-duration="1000"
+            >
+              Pilihan Menu Spesial
+            </h2>
+            <div
+              class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center"
+              id="menu-utama-container"
+            >
+              <div
+                class="col"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay="200"
+              >
+                <div
+                  class="menu-item-card h-100 shadow rounded-3"
+                  data-menu="Paket Ayam Bakar Pedas"
+                  data-harga="13000"
+                >
+                  <img
+                    src="img/ayam bakar.jpg"
+                    class="card-img-top"
+                    alt="Ayam Bakar"
+                  />
+                  <div class="card-body text-center p-3">
+                    <h5 class="card-title fw-bold text-primary mb-1">
+                      Paket Ayam Bakar Pedas
+                    </h5>
+                    <p class="card-text text-muted small mb-2">
+                      Ayam bakar bumbu pedas manis, nasi, sambal terasi, dan
+                      lalapan segar.
+                    </p>
+
+                    <div class="card-footer-group">
+                      <div class="price-rating-group">
+                        <span class="price-tag fw-bold">Rp 13.000</span>
+                      </div>
+                      <div>
+                        <button
+                          class="btn btn-success order-button"
+                          onclick="handleOrder(this)"
+                        >
+                          Pesan <i class="fab fa-whatsapp"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="col"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay="400"
+              >
+                <div
+                  class="menu-item-card h-100 shadow rounded-3"
+                  data-menu="Paket Ayam Geprek Maut"
+                  data-harga="13000"
+                >
+                  <img
+                    src="img/ayam geprek.jpg"
+                    class="card-img-top"
+                    alt="Ayam Geprek"
+                  />
+                  <div class="card-body text-center p-3">
+                    <h5 class="card-title fw-bold text-primary mb-1">
+                      Paket Ayam Geprek Maut
+                    </h5>
+                    <p class="card-text text-muted small mb-2">
+                      Ayam renyah digeprek sambal rawit level 5, nasi, dan
+                      timun.
+                    </p>
+
+                    <div class="card-footer-group">
+                      <div class="price-rating-group">
+                        <span class="price-tag fw-bold">Rp 13.000</span>
+                      </div>
+                      <div>
+                        <button
+                          class="btn btn-success order-button"
+                          onclick="handleOrder(this)"
+                        >
+                          Pesan <i class="fab fa-whatsapp"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="col"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay="600"
+              >
+                <div
+                  class="menu-item-card h-100 shadow rounded-3"
+                  data-menu="Paket Ayam Kipas"
+                  data-harga="13000"
+                >
+                  <img
+                    src="img/ayam kipas.jpg"
+                    class="card-img-top"
+                    alt="Ayam Kipas"
+                  />
+                  <div class="card-body text-center p-3">
+                    <h5 class="card-title fw-bold text-primary mb-1">
+                      Paket Ayam Kipas
+                    </h5>
+                    <p class="card-text text-muted small mb-2">
+                      Ayam goreng bumbu tradisional, nasi, dan sambal
+                    </p>
+
+                    <div class="card-footer-group">
+                      <div class="price-rating-group">
+                        <span class="price-tag fw-bold">Rp 13.000</span>
+                      </div>
+                      <div>
+                        <button
+                          class="btn btn-success order-button"
+                          onclick="handleOrder(this)"
+                        >
+                          Pesan <i class="fab fa-whatsapp"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center mt-4"
+              id="menu-lainnya-container"
+              style="display: none"
+            >
+              <div class="col" data-aos="fade-up" data-aos-duration="1000">
+                <div
+                  class="menu-item-card h-100 shadow rounded-3"
+                  data-menu="Paket Lele Goreng Sambal"
+                  data-harga="13000"
+                >
+                  <img
+                    src="img/ikan lele.jpg"
+                    class="card-img-top"
+                    alt="Lele Goreng"
+                  />
+                  <div class="card-body text-center p-3">
+                    <h5 class="card-title fw-bold text-primary mb-1">
+                      Paket Lele Goreng
+                    </h5>
+                    <p class="card-text text-muted small mb-2">
+                      Lele renyah, nasi, dan sambal pedas segar.
+                    </p>
+                    <div class="card-footer-group">
+                      <div class="price-rating-group">
+                        <span class="price-tag fw-bold">Rp 13.000</span>
+                      </div>
+                      <div>
+                        <button
+                          class="btn btn-success order-button"
+                          onclick="handleOrder(this)"
+                        >
+                          Pesan <i class="fab fa-whatsapp"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="col"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay="200"
+              >
+                <div
+                  class="menu-item-card h-100 shadow rounded-3"
+                  data-menu="Ayam Penyet Spesial"
+                  data-harga="15000"
+                >
+                  <img
+                    src="img/ayam penyet.jpg"
+                    class="card-img-top"
+                    alt="Ayam Penyet"
+                  />
+                  <div class="card-body text-center p-3">
+                    <h5 class="card-title fw-bold text-primary mb-1">
+                      Ayam Penyet Spesial
+                    </h5>
+                    <p class="card-text text-muted small mb-2">
+                      Ayam Penyet pedas dengan sambel segar.
+                    </p>
+                    <div class="card-footer-group">
+                      <div class="price-rating-group">
+                        <span class="price-tag fw-bold">Rp 15.000</span>
+                      </div>
+                      <div>
+                        <button
+                          class="btn btn-success order-button"
+                          onclick="handleOrder(this)"
+                        >
+                          Pesan <i class="fab fa-whatsapp"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="col"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay="400"
+              >
+                <div
+                  class="menu-item-card h-100 shadow rounded-3"
+                  data-menu="nila bakar"
+                  data-harga="13000"
+                >
+                  <img
+                    src="img/nila bakar.jpg"
+                    class="card-img-top"
+                    alt="Nila bakar"
+                  />
+                  <div class="card-body text-center p-3">
+                    <h5 class="card-title fw-bold text-primary mb-1">
+                      Nila Bakar
+                    </h5>
+                    <p class="card-text text-muted small mb-2">
+                      Nila bakar dengan ikan yang gurih.
+                    </p>
+                    <div class="card-footer-group">
+                      <div class="price-rating-group">
+                        <span class="price-tag fw-bold">Rp 13.000</span>
+                      </div>
+                      <div>
+                        <button
+                          class="btn btn-success order-button"
+                          onclick="handleOrder(this)"
+                        >
+                          Pesan <i class="fab fa-whatsapp"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="col"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay="600"
+              >
+                <div
+                  class="menu-item-card h-100 shadow rounded-3"
+                  data-menu="Nasi Tumpeng"
+                  data-harga="150000"
+                >
+                  <img
+                    src="img/tumpeng.jpg"
+                    class="card-img-top"
+                    alt="Nasi tumpeng"
+                  />
+                  <div class="card-body text-center p-3">
+                    <h5 class="card-title fw-bold text-primary mb-1">
+                      Paket Nasi Tumpeng
+                    </h5>
+                    <p class="card-text text-muted small mb-2">
+                      Nasi tumpung bumbu rempah, nasi, sambal, dan lalapan.
+                    </p>
+                    <div class="card-footer-group">
+                      <div class="price-rating-group">
+                        <span class="price-tag fw-bold">Rp 150.000</span>
+                      </div>
+                      <div>
+                        <button
+                          class="btn btn-success order-button"
+                          onclick="handleOrder(this)"
+                        >
+                          Pesan <i class="fab fa-whatsapp"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="col"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay="800"
+              >
+                <div
+                  class="menu-item-card h-100 shadow rounded-3"
+                  data-menu="nasi kuning"
+                  data-harga="150000"
+                >
+                  <img
+                    src="img/nasi kuning.jpg"
+                    class="card-img-top"
+                    alt="Nasi Kuning"
+                  />
+                  <div class="card-body text-center p-3">
+                    <h5 class="card-title fw-bold text-primary mb-1">
+                      Nasi Kuning
+                    </h5>
+                    <p class="card-text text-muted small mb-2">
+                      Ayam goreng dengan serundeng gurih.
+                    </p>
+                    <div class="card-footer-group">
+                      <div class="price-rating-group">
+                        <span class="price-tag fw-bold">Rp 150.000</span>
+                      </div>
+                      <div>
+                        <button
+                          class="btn btn-success order-button"
+                          onclick="handleOrder(this)"
+                        >
+                          Pesan <i class="fab fa-whatsapp"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="col"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay="1000"
+              >
+                <div
+                  class="menu-item-card h-100 shadow rounded-3"
+                  data-menu="Nasi Kotak"
+                  data-harga="20000"
+                >
+                  <img
+                    src="img/nasi kotak.jpg"
+                    class="card-img-top"
+                    alt="Nasi Kotak"
+                  />
+                  <div class="card-body text-center p-3">
+                    <h5 class="card-title fw-bold text-primary mb-1">
+                      Nasi Kotak
+                    </h5>
+                    <p class="card-text text-muted small mb-2">
+                      nasi kotak dengan ayam dan sambal yang gurih.
+                    </p>
+                    <div class="card-footer-group">
+                      <div class="price-rating-group">
+                        <span class="price-tag fw-bold">Rp 20.000</span>
+                      </div>
+                      <div>
+                        <button
+                          class="btn btn-success order-button"
+                          onclick="handleOrder(this)"
+                        >
+                          Pesan <i class="fab fa-whatsapp"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center mt-5">
+              <button
+                id="toggle-menu-btn"
+                class="btn btn-lg btn-secondary"
+                onclick="toggleMenuLainnya()"
+              >
+                Lihat Menu Lainnya
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" class="py-5 about-section">
+          <div class="container text-center">
+            <h2 class="section-title text-white mb-4" data-aos="fade-in">
+              Filosofi Rasa Kami
+            </h2>
+            <p class="lead text-white mb-4" data-aos="fade-up">
+              "Kami percaya, makanan enak harus jujur. Dibuat dengan cinta,
+              dimasak dengan sepenuh hati."
+            </p>
+            <a
+              href="#order"
+              class="btn btn-light btn-lg fw-bold smooth-scroll"
+              data-aos="zoom-in"
+              >Hubungi Kami</a
+            >
+          </div>
+        </section>
+
+        <section id="order" class="py-5 custom-bg-secondary">
+          <div class="container">
+            <h2
+              class="text-center mb-4 text-white section-title"
+              data-aos="fade-in"
+            >
+              Cara Pemesanan
+            </h2>
+            <div class="row text-center text-white">
+              <div
+                class="col-md-4 mb-3"
+                data-aos="fade-up"
+                data-aos-delay="100"
+              >
+                <i class="fas fa-list-alt fa-3x mb-3 text-warning"></i>
+                <h4>1. Pilih Menu</h4>
+                <p>
+                  Tentukan paket favorit Anda dari daftar menu spesial kami.
+                </p>
+              </div>
+              <div
+                class="col-md-4 mb-3"
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
+                <i class="fab fa-whatsapp fa-3x mb-3 text-warning"></i>
+                <h4>2. Konfirmasi Order</h4>
+                <p>
+                  Klik 'Pesan Sekarang', kami akan memandu Anda via WhatsApp.
+                </p>
+              </div>
+              <div
+                class="col-md-4 mb-3"
+                data-aos="fade-up"
+                data-aos-delay="500"
+              >
+                <i class="fas fa-motorcycle fa-3x mb-3 text-warning"></i>
+                <h4>3. Terima Pesanan</h4>
+                <p>
+                  Nikmati hidangan lezat yang diantar langsung ke tempat Anda.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="location" class="py-5 bg-white">
+          <div class="container" data-aos="fade-up" data-aos-duration="1000">
+            <h2 class="text-center mb-5 section-title">Lokasi Kami</h2>
+
+            <div class="row justify-content-center">
+              <div class="col-lg-10">
+                <div class="card shadow-lg location-card">
+                  <div class="card-body p-0">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2784.6564803251736!2d104.5447241472135!3d-4.895888048427584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e389d001784730d%3A0x104101c8797b69d5!2sMahad%20Khalid%20Bin%20walid!5e1!3m2!1sid!2sid!4v1765000754524!5m2!1sid!2sid"
+                      width="600"
+                      height="450"
+                      style="border: 0"
+                      allowfullscreen=""
+                      loading="lazy"
+                      referrerpolicy="no-referrer-when-downgrade"
+                      width="100%"
+                      height="450"
+                      style="border: 0; border-radius: 10px"
+                      allowfullscreen=""
+                      loading="lazy"
+                      referrerpolicy="no-referrer-when-downgrade"
+                      id="map-iframe"
+                    ></iframe>
+                  </div>
+                  <div class="card-footer text-center bg-light">
+                    <p class="mb-0 small text-muted">
+                      Kami berada di dekat pusat kota. Kunjungi kami!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer class="bg-dark text-white text-center py-4">
+          <p class="mb-0">
+            &copy; 2024 Dapur Mba Indah. Sajian Premium Indonesia.
+          </p>
+        </footer>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+      // Deklarasikan fungsi pemesanan di scope global
+      const handleOrder = (buttonElement) => {
+        const phoneNumber = "6281379502243"; // NOMOR WHATSAPP PENJUAL ANDA
+
+        const card = buttonElement.closest(".menu-item-card");
+
+        if (card) {
+          const menuName = card.getAttribute("data-menu");
+          const menuPrice = card.getAttribute("data-harga");
+
+          // Format pesan otomatis
+          const formattedPrice = menuPrice.replace(
+            /(\d)(?=(\d{3})+(?!\d))/g,
+            "$1."
+          );
+          const message = `Halo Dapur Mba Indah, saya mau pesan menu:\n\n*${menuName}*\nHarga: Rp ${formattedPrice}\n\nMohon konfirmasi pesanan dan total biaya pengiriman. Terima kasih!`;
+
+          // Buat tautan WhatsApp API dan buka
+          const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(
+            message
+          )}`;
+
+          window.open(whatsappUrl, "_blank");
+        } else {
+          console.error(
+            "ERROR: Data menu tidak ditemukan pada kartu terdekat."
+          );
+          alert("Gagal memproses pesanan. Data menu tidak ditemukan.");
+        }
+      };
+
+      // Fungsi untuk membuat elemen bintang HTML (Hanya untuk display)
+      const createStarElements = (rating) => {
+        let starsHtml = "";
+        for (let i = 1; i <= 5; i++) {
+          if (rating >= i) {
+            starsHtml += '<i class="fas fa-star"></i>';
+          } else if (rating >= i - 0.5) {
+            starsHtml += '<i class="fas fa-star-half-alt"></i>';
+          } else {
+            starsHtml += '<i class="far fa-star"></i>';
+          }
+        }
+        return starsHtml;
+      };
+
+      // Fungsi untuk menampilkan/menyembunyikan menu lainnya
+      const toggleMenuLainnya = () => {
+        const container = document.getElementById("menu-lainnya-container");
+        const button = document.getElementById("toggle-menu-btn");
+
+        if (
+          container.style.display === "none" ||
+          container.style.display === ""
+        ) {
+          container.style.display = "flex"; // Tampilkan container (menggunakan flex untuk row)
+          button.textContent = "Sembunyikan Menu Lainnya";
+        } else {
+          container.style.display = "none"; // Sembunyikan container
+          button.textContent = "Lihat Menu Lainnya";
+          // Gulir kembali ke bagian menu utama jika disembunyikan
+          document
+            .getElementById("menu")
+            .scrollIntoView({ behavior: "smooth" });
+        }
+      };
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // ------------------------------------
+        // INISIALISASI AOS
+        // ------------------------------------
+        AOS.init({
+          once: true,
+          duration: 800,
+        });
+
+        // --- LOGIC ROTASI BACKGROUND SLIDER (Sliding Parallax) ---
+        const sliderContainer = document.querySelector("#hero-backgrounds");
+        const bgItems = document.querySelectorAll("#hero-backgrounds .bg-item");
+        let currentIndex = 0;
+        const intervalTime = 5000; // Ganti gambar setiap 5 detik
+
+        function rotateBackgrounds() {
+          if (bgItems.length <= 1) return;
+
+          // Hitung index berikutnya
+          currentIndex = (currentIndex + 1) % bgItems.length;
+
+          // Hitung pergeseran 100% ke kiri
+          const offset = -currentIndex * 100;
+
+          // Pindahkan seluruh container slider (Sliding Transition)
+          if (sliderContainer) {
+            sliderContainer.style.transform = `translateX(${offset}%)`;
+          }
+        }
+
+        // Inisialisasi: Atur lebar container slider
+        if (sliderContainer && bgItems.length > 0) {
+          sliderContainer.style.width = `${bgItems.length * 100}%`;
+        }
+
+        // Mulai rotasi otomatis
+        if (bgItems.length > 1) {
+          setInterval(rotateBackgrounds, intervalTime);
+        }
+
+        // --- SMOOTH SCROLLING ---
+        document.querySelectorAll(".smooth-scroll").forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 70, // Offset untuk sticky header
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
